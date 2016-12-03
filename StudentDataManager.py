@@ -2,7 +2,7 @@ from Student import Student
 import csv
 import shutil
 
-class StudentManager:
+class StudentDataManager:
 
 	def __init__(self, filename):
 		self.__filename = filename

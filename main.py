@@ -1,37 +1,37 @@
-from StudentManager import StudentManager
+from StudentDataManager import StudentDataManager
 from Student import Student
 
-student_manager = StudentManager('Data/alunos.csv')
+manager = StudentDataManager('Data/alunos.csv')
 
 def create_emails(name):
 	emails = []
 	names = name.lower().split()
 
 	uffmail = names[0]+names[-1]+'@id.uff.br'
-	if not student_manager.uffmail_exists(uffmail):
+	if not manager.uffmail_exists(uffmail):
 		emails.append(uffmail)
 
 	uffmail = names[0][0]+names[-1]+'@id.uff.br'
-	if not student_manager.uffmail_exists(uffmail):
+	if not manager.uffmail_exists(uffmail):
 		emails.append(uffmail)
 
 	uffmail = names[0] + ''.join(list((name[0] for name in names[1:-1]))) + names[-1] + '@id.uff.br'
-	if not student_manager.uffmail_exists(uffmail):
+	if not manager.uffmail_exists(uffmail):
 		emails.append(uffmail)
 
 	uffmail = names[0] + ''.join(list((name[0] for name in names[1:]))) + '@id.uff.br'
-	if not student_manager.uffmail_exists(uffmail):
+	if not manager.uffmail_exists(uffmail):
 		emails.append(uffmail)
 
 	uffmail = ''.join(list((name[0] for name in names[:-1])))+ names[-1] + '@id.uff.br'
-	if not student_manager.uffmail_exists(uffmail):
+	if not manager.uffmail_exists(uffmail):
 		emails.append(uffmail)
 
 	size = len(emails)
 	end = 1
 	while size < 5:
 		uffmail = names[0]+names[-1]+str(end)+'@id.uff.br'
-		if not student_manager.uffmail_exists(uffmail):
+		if not manager.uffmail_exists(uffmail):
 			emails.append(uffmail)
 			size += 1
 		end += 1
@@ -42,7 +42,7 @@ def create_emails(name):
 def main():
 	
 	number = input('Digite sua matrícula: ')
-	student = student_manager.get_student(number)
+	student = manager.get_student(number)
 	print('Aluno(a) '+ student.name)
 	
 	emails = create_emails(student.name)
@@ -55,7 +55,7 @@ def main():
 		student.uffmail = emails[int(choosen)-1]
 		print('\nO endereço de email '+student.uffmail+' foi selecionado e será criado nos próximos minutos.')
 		print('Um SMS foi enviado para '+student.phone+' com a sua senha de acesso.')
-		student_manager.write_student(student)
+		manager.write_student(student)
 
 	elif student.uffmail != '':
 		print('Esse(a) aluno(a) já possui um UFFMail cadastrado.')
