@@ -1,4 +1,4 @@
-### Desafio 1
+## Desafio 1
 
 - Para rodar o programa digite `python main.py` no terminal aberto na pasta do projeto.
 - Digite o número da matrícula para selecionar o aluno desejado no arquivo alunos.csv localizado na pasta Data.
