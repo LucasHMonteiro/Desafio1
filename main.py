@@ -57,10 +57,10 @@ def main():
 		print('Um SMS foi enviado para '+student.phone+' com a sua senha de acesso.')
 		manager.write_student(student)
 
-	elif student.uffmail != '':
-		print('Esse(a) aluno(a) já possui um UFFMail cadastrado.')
-	else:
+	elif not student.status:
 		print('Esse(a) aluno(a) não está ativo.')
+	else:
+		print('Esse(a) aluno(a) já possui um UFFMail cadastrado.')
 
 if __name__ == '__main__':
 	main()

@@ -1,7 +1,7 @@
 
 class Student:
 
-	def __init__(self, name, number, phone, email, uffmail=None, status=False):
+	def __init__(self, name, number, phone, email, status, uffmail=''):
 		self.__name = name
 		self.__number = number
 		self.__phone = phone

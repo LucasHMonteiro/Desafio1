@@ -12,7 +12,7 @@ class StudentDataManager:
 			reader = csv.reader(csvfile)
 			for row in reader:
 				if row[1] == number:
-					student = Student(row[0], row[1], row[2], row[3], row[4], row[5]=='Ativo')
+					student = Student(row[0], row[1], row[2], row[3], row[5] == 'Ativo', row[4])
 					return student
 			csvfile.close()
 		return None
